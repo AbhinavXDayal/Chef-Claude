@@ -1,6 +1,6 @@
 # 🍳 Chef Claude
 
-![Chef Claude](output/1st.png)
+![Chef Claude](output/chef-claude-preview.gif)
 
 A minimalistic AI-powered recipe generator that creates delicious recipes from your available ingredients. Built with React and powered by Hugging Face's advanced language models.
 
