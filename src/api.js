@@ -2,32 +2,20 @@ import { HfInference } from '@huggingface/inference'
 
 const SYSTEM_PROMPT = `You are an assistant that receives a list of ingredients that a user has and suggests a recipe they could make with some or all of those ingredients. You don't need to use every ingredient they mention in your recipe. The recipe can include additional ingredients they didn't mention, but try not to include too many extra ingredients. Format your response in markdown to make it easier to render to a web page.`
 
-console.log("All env vars:", import.meta.env)
-const token = import.meta.env.VITE_HF_ACCESS_TOKEN
-console.log("Token available:", !!token)
-console.log("Token starts with:", token ? token.substring(0, 10) + "..." : "No token")
-
-// Try alternative ways to get the token
-const token2 = process.env.VITE_HF_ACCESS_TOKEN
-console.log("Token2 available:", !!token2)
-
-const hf = new HfInference(token || token2)
+const hf = new HfInference(import.meta.env.VITE_HF_ACCESS_TOKEN)
 
 export async function getRecipeFromMistral(ingredientsArr) {
     const ingredientsString = ingredientsArr.join(", ")
     try {
-        const prompt = `${SYSTEM_PROMPT}\n\nUser: I have ${ingredientsString}. Please give me a recipe you'd recommend I make!\n\nAssistant:`
-        
-        const response = await hf.textGeneration({
-            model: "distilgpt2",
-            inputs: prompt,
-            parameters: {
-                max_new_tokens: 1024,
-                temperature: 0.7,
-                do_sample: true
-            }
+        const response = await hf.chatCompletion({
+            model: "HuggingFaceH4/zephyr-7b-beta",
+            messages: [
+                { role: "system", content: SYSTEM_PROMPT },
+                { role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!` },
+            ],
+            max_tokens: 1024,
         })
-        return response.generated_text
+        return response.choices[0].message.content
     } catch (err) {
         console.error("Error generating recipe:", err.message)
         return "Sorry, something went wrong while fetching the recipe."
