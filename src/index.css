@@ -120,8 +120,7 @@ main {
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-top: 50px;
-  animation: fadeInUp 0.8s 0.2s backwards;
+  margin-top: 40px;
 }
 
 @keyframes fadeInUp {
@@ -130,30 +129,17 @@ main {
 }
 
 .add-form > input {
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid #D1D5DB;
-  padding: 9px 13px;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
-  flex-grow: 1;
-  min-width: 150px;
-  max-width: 600px;
+  padding: 10px 15px;
+  font-size: 1rem;
   background: var(--color-card-bg);
   color: var(--color-text);
-  transition: var(--transition);
 }
 .add-form > button {
-  font-family: Inter,sans-serif;
-  border-radius: 6px;
-  border: none;
-  background-color: var(--color-btn-bg);
-  color: var(--color-btn-text);
-  width: 150px;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: var(--transition), transform 0.18s;
-  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.05);
-  position: relative;
-  overflow: hidden;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 1rem;
 }
 .add-form > button::before {
   content: "+";
@@ -166,18 +152,19 @@ main {
   box-shadow: 0 4px 16px rgba(0,0,0,0.10);
 }
 ul.ingredients-list {
-  margin-bottom: 48px;
+  margin-bottom: 32px;
 }
 ul.ingredients-list > li {
   color: var(--color-list-text);
   line-height: 28px;
   background: var(--color-list-bg);
-  border-radius: 6px;
-  padding: 6px 14px;
-  margin-bottom: 8px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-bottom: 10px;
   transition: var(--transition), transform 0.18s;
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   animation: fadeInUp 0.7s backwards;
+  font-size: 1.08rem;
 }
 ul.ingredients-list > li:hover {
   transform: scale(1.03) translateX(6px);
@@ -188,9 +175,9 @@ ul.ingredients-list > li:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 10px;
   background: var(--color-card-bg);
-  padding: 16px 32px;
+  padding: 18px 28px;
   box-shadow: var(--color-shadow);
   transition: var(--transition);
   animation: fadeInUp 0.8s 0.1s backwards;
@@ -206,16 +193,9 @@ ul.ingredients-list > li:hover {
   line-height: 20px;
 }
 .get-recipe-container button {
-  border: none;
-  border-radius: 6px;
-  background: var(--color-recipe-btn-bg);
-  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.05);
-  color: var(--color-recipe-btn-text);
-  padding: 9px 17px;
-  font-family: Inter, sans-serif;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: var(--transition), transform 0.18s;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 1rem;
 }
 .get-recipe-container button:hover {
   background: var(--color-recipe-btn-hover-bg);
@@ -223,42 +203,50 @@ ul.ingredients-list > li:hover {
 }
 .recipe-output {
   background: var(--color-recipe-bg);
-  padding: 1rem;
-  border-radius: 10px;
-  margin-top: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: var(--transition);
-  animation: fadeInUp 0.7s 0.2s backwards;
+  padding: 1.2rem 1rem;
+  border-radius: 14px;
+  margin-top: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  max-height: 350px;
+  overflow-y: auto;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  word-break: break-word;
+  white-space: pre-line;
 }
 
 /* Modern Main Layout */
 .main-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  margin-top: 3rem;
   align-items: flex-start;
+  justify-content: center;
 }
 
 .card {
-  background: linear-gradient(135deg, var(--color-card-bg) 80%, rgba(209,117,87,0.07) 100%);
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
-  transition: var(--transition), box-shadow 0.3s;
-  position: relative;
-  min-width: 0;
-  animation: fadeInUp 0.7s backwards;
+  background: #232326;
+  border-radius: 20px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+  padding: 2.5rem 2rem 2rem 2rem;
+  min-width: 320px;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 1rem;
+  transition: box-shadow 0.3s, background 0.3s;
 }
 .card:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.22);
 }
 
 .ingredients-card {
   min-width: 260px;
+  max-width: 350px;
 }
 .recipe-card {
   min-width: 320px;
+  max-width: 500px;
 }
 
 .ingredients-header-row {
@@ -346,6 +334,11 @@ ul.ingredients-list > li:hover {
   transform: scale(1.08);
 }
 
+.recipe-header-row h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 .toast {
   position: fixed;
   top: 24px;
@@ -369,24 +362,33 @@ ul.ingredients-list > li:hover {
 /* Responsive Design */
 @media (max-width: 900px) {
   .main-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    align-items: stretch;
   }
   .card {
-    padding: 1.2rem 0.7rem 1rem 0.7rem;
+    margin: 0 auto;
+    max-width: 95vw;
+    min-width: 0;
   }
 }
 @media (max-width: 600px) {
   .main-grid {
-    margin-top: 1.2rem;
+    margin-top: 0.5rem;
     gap: 1rem;
   }
   .card {
-    padding: 0.7rem 0.2rem 0.7rem 0.2rem;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    max-width: 99vw;
   }
   .ingredients-header-row, .recipe-header-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.3em;
+  }
+  .recipe-output {
+    max-height: 220px;
+    font-size: 0.98rem;
   }
 }
