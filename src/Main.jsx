@@ -20,26 +20,10 @@ export default function Main() {
     setToast(msg);
   }
 
-  // Add a list of common ingredients for validation
-  const COMMON_INGREDIENTS = [
-    "salt", "pepper", "sugar", "flour", "egg", "milk", "butter", "cheese", "tomato", "onion", "garlic", "chicken", "beef", "pork", "fish", "rice", "pasta", "potato", "carrot", "broccoli", "spinach", "lettuce", "cucumber", "olive oil", "vinegar", "basil", "oregano", "thyme", "parsley", "cilantro", "lemon", "lime", "apple", "banana", "orange", "strawberry", "blueberry", "yogurt", "cream", "baking powder", "baking soda", "cornstarch", "soy sauce", "honey", "mustard", "mayonnaise", "ketchup", "chili", "cinnamon", "nutmeg", "clove", "ginger", "mushroom", "bell pepper", "zucchini", "eggplant", "peas", "beans", "lentils", "corn", "avocado", "shrimp", "salmon", "tuna", "ham", "bacon", "sausage", "turkey", "duck", "lamb", "walnut", "almond", "peanut", "cashew", "hazelnut", "coconut", "chocolate", "vanilla", "maple syrup", "jam", "jelly", "pickles", "capers", "anchovy", "sardine", "crab", "lobster", "scallop", "clam", "oyster", "tofu", "tempeh", "seitan", "miso", "wasabi", "nori", "seaweed", "sesame", "pumpkin", "squash", "sweet potato", "radish", "turnip", "parsnip", "leek", "shallot", "chive", "artichoke", "asparagus", "beet", "cabbage", "cauliflower", "celery", "fennel", "kale", "okra", "rhubarb", "watercress", "arugula", "endive", "escarole", "dill", "rosemary", "sage", "tarragon", "bay leaf", "marjoram", "mint", "paprika", "curry powder", "cumin", "cardamom", "turmeric", "saffron", "allspice", "star anise", "sumac", "za'atar", "harissa", "chipotle", "jalapeno", "habanero", "serrano", "poblano", "cayenne", "tabasco", "sriracha", "hoisin", "teriyaki", "mirin", "rice vinegar", "sherry", "marsala", "vermouth", "wine", "beer", "rum", "vodka", "whiskey", "bourbon", "tequila", "gin", "brandy", "cognac", "liqueur", "espresso", "coffee", "tea", "matcha", "chai", "cocoa", "milk chocolate", "dark chocolate", "white chocolate"
-  ];
-
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient");
-    if (!newIngredient) return;
-    // Validate ingredient (case-insensitive)
-    const isValid = COMMON_INGREDIENTS.some(
-      (item) => item.toLowerCase() === newIngredient.trim().toLowerCase()
-    );
-    if (!isValid) {
-      showToast("Not a valid ingredient.");
-      return;
-    }
-    if (!ingredients.includes(newIngredient)) {
-      setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
-      showToast(`Added: ${newIngredient}`);
-    }
+    setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
+    showToast(`Added: ${newIngredient}`);
   }
 
   function removeIngredient(ingredient) {
